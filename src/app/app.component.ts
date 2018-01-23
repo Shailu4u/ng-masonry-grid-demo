@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
     </ng-masonry-grid>
   </div>
 `,
-styleUrls: ['../../node_modules/ng-masonry-grid/ng-masonry-grid.css'] // point to ng masonry grid css
+styleUrls: ['../../node_modules/ng-masonry-grid/ng-masonry-grid.css', './app.component.css'] // point to ng masonry grid css
 })
 export class AppComponent {
 
