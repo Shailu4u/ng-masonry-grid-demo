@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
                   [useImagesLoaded]="true"
                   [scrollAnimationOptions]="animOptions">
       <ng-masonry-grid-item *ngFor="let item of masonryItems; let i = index;">
-        <img src="../assets/images/{{ (i+1) >  15 ? masonryItems.length - i: i+1 }}.jpg" alt="No image" />
+        <img [src]=" '../assets/images/'+ ( (i+1) >  15 ? masonryItems.length - i: i+1 ) + '.jpg'" alt="No image" />
       </ng-masonry-grid-item>
     </ng-masonry-grid>
   </div>
