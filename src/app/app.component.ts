@@ -17,7 +17,7 @@ import { Component } from '@angular/core';
                   [useImagesLoaded]="true"
                   [scrollAnimationOptions]="animOptions">
       <ng-masonry-grid-item *ngFor="let item of masonryItems; let i = index;">
-        <img [src]=" '../assets/images/'+ ( (i+1) >  15 ? masonryItems.length - i: i+1 ) + '.jpg'" alt="No image" />
+        <img [src]="item" alt="No image" />
       </ng-masonry-grid-item>
     </ng-masonry-grid>
   </div>
@@ -32,7 +32,7 @@ export class AppComponent {
 
   animOptions = { animationEffect: 'effect-1' };
 
-  masonryItems: Array<number> = [];
+  masonryItems: Array<string> = [];
 
   constructor() {
     this.buttons = [
@@ -45,7 +45,12 @@ export class AppComponent {
       { index: 7, active: false },
       { index: 8, active: false }
     ];
-    this.masonryItems.length = 30;
+
+    const len = 40; // length of grid items
+
+    for (let i = 0; i <= len; i++) {
+      this.masonryItems.push(this.getSrc());
+    }
   }
 
   onSelect(item) {
@@ -54,5 +59,13 @@ export class AppComponent {
     item.active = true;
     this.animOptions = { animationEffect: 'effect-' + item.index };
     setTimeout(() => this.showMasonry = true, 100);
+  }
+
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+  getSrc() {
+    return '../assets/images/' + this.getRandomInt(1, 15) + '.jpg';
   }
 }
