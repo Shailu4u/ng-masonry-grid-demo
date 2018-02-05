@@ -1,6 +1,6 @@
 {
   "name": "ng-masonry-grid-demo",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -30,7 +30,7 @@
     "express": "^4.16.2",
     "imagesloaded": "^4.1.4",
     "masonry-layout": "^4.2.1",
-    "ng-masonry-grid": "^1.2.2",
+    "ng-masonry-grid": "^1.2.3",
     "rxjs": "^5.5.2",
     "typescript": "~2.4.2",
     "web-animations-js": "^2.3.1",
