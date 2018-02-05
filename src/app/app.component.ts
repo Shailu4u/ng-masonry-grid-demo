@@ -8,6 +8,7 @@ import { ISubscription } from 'rxjs/Subscription';
   <div class="container">
     <div class="div-1">
       <h2 style="text-align: center;">Angular 2 module for Masonry layout</h2>
+      <h4>Note: Click on grid item to remove</h4>
       <ng-masonry-grid *ngIf="showMasonry"
                     [masonryOptions]="{ transitionDuration: '0.4s', gutter: 10 }"
                     [useAnimation]="true"
@@ -101,11 +102,13 @@ export class AppComponent implements OnDestroy {
   }
 
   getRandomInt(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
+    return  Math.floor( Math.random() * max + min );
   }
 
   getSrc() {
-    return '../assets/images/' + this.getRandomInt(1, 15) + '.jpg';
+    const width = this.getRandomInt( 300, 400 );
+    const height = this.getRandomInt( 300, 500 );
+    return 'http://lorempixel.com/'  + width + '/' + height + '/nature';
   }
 
   onNgMasonryInit($event: Masonry) {
@@ -118,9 +121,11 @@ export class AppComponent implements OnDestroy {
     if (this._masonry) {
       this._removeItemSubscription = this._masonry.removeItem($event.currentTarget)
           .subscribe((item: MasonryGridItem) => {
-            const id = item.element.getAttribute('id');
-            const index = id.split('-')[2];
-            this.masonryItems.splice(index, 1);
+            if (item) {
+              const id = item.element.getAttribute('id');
+              const index = id.split('-')[2];
+              this.masonryItems.splice(index, 1);
+            }
           });
     }
   }
@@ -151,9 +156,11 @@ export class AppComponent implements OnDestroy {
     if (this._masonry) {
       this._removeFirstItemSubscription = this._masonry.removeFirstItem()
           .subscribe( (item: MasonryGridItem) => {
-            const id = item.element.getAttribute('id');
-            const index = id.split('-')[2];
-            this.masonryItems.splice(index, 1);
+            if (item) {
+              const id = item.element.getAttribute('id');
+              const index = id.split('-')[2];
+              this.masonryItems.splice(index, 1);
+            }
          });
     }
   }
